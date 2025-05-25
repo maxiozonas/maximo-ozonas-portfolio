@@ -1,0 +1,124 @@
+---
+import { Linkedin, Github, Instagram, Mail, Menu, X } from "@lucide/astro"
+
+import { languages } from "../i18n/ui";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+// Determine the alternate language
+const alternateLanguage = lang === 'es' ? 'en' : 'es';
+const alternateLanguageName = languages[alternateLanguage];
+---
+
+<header class="container mx-auto fixed top-0 left-0 right-0 w-full flex justify-between items-center h-16 px-6 md:px-20 z-50 transition-all duration-300 bg-[#000814]/50 backdrop-blur-sm">
+    <!-- Social icons - visible on desktop, hidden on mobile -->
+    <ul class="hidden md:flex gap-8">
+        <li>
+            <a href="https://linkedin.com/in/maximo-ozonas" class="text-white/80 hover:text-[#99d98c] transition-colors duration-300">
+                <Linkedin />
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/maximo-ozonas" class="text-white/80 hover:text-[#99d98c] transition-colors duration-300">
+                <Github />
+            </a>
+        </li>
+        <li>
+            <a href="https://instagram.com/maximo_ozonas" class="text-white/80 hover:text-[#99d98c] transition-colors duration-300">
+                <Instagram />
+            </a>
+        </li>
+        <li>
+            <a href="mailto:maximo_ozonas@outlook.com" class="text-white/80 hover:text-[#99d98c] transition-colors duration-300">
+                <Mail />
+            </a>
+        </li>
+    </ul>
+    
+    <!-- Logo or name for mobile -->
+    <div class="md:hidden text-[#99d98c] font-bold text-xl">Maximo Ozonas</div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:block">
+        <ul class="flex gap-8">
+            <li>
+                <a href="#home" class="text-white/80 font-semibold hover:text-[#99d98c] transition-colors duration-300 nav-link" data-section="home">{t('nav.home')}</a>
+            </li>
+            <li>
+                <a href="#experience" class="text-white/80 font-semibold hover:text-[#99d98c] transition-colors duration-300 nav-link" data-section="experience">{t('nav.experience')}</a>
+            </li>
+            <li>
+                <a href="#projects" class="text-white/80 font-semibold hover:text-[#99d98c] transition-colors duration-300 nav-link" data-section="projects">{t('nav.projects')}</a>
+            </li>
+            <li>
+                <a href="#contact" class="text-white/80 font-semibold hover:text-[#99d98c] transition-colors duration-300 nav-link" data-section="contact">{t('nav.contact')}</a>
+            </li>
+            <li>
+                <a href={translatePath('/', alternateLanguage)} class="text-[#99d98c] font-semibold border border-[#99d98c] rounded-md px-3 py-1 hover:bg-[#99d98c]/50 hover:text-white/80 transition-colors duration-300">
+                    {alternateLanguageName}
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Language selector for mobile (left of menu button) -->
+    <div class="md:hidden flex items-center gap-4">
+        <a href={translatePath('/', alternateLanguage)} class="text-[#99d98c] font-semibold border border-[#99d98c] rounded-md px-2 py-1 hover:bg-[#99d98c]/10 transition-colors duration-300">
+            {alternateLanguageName}
+        </a>
+        
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-button" aria-expanded="false" aria-label="Toggle menu" class="text-white/80 hover:text-[#99d98c] transition-colors duration-300">
+            <Menu class="block" />
+        </button>
+    </div>
+</header>
+
+<!-- Mobile menu (hidden by default) -->
+<div id="mobile-menu" class="fixed mt-12 w-full h-full inset-0 z-40 hidden bg-[#000814]/95 backdrop-blur-md px-6 opacity-0 transform translate-y-[-20px] transition-all duration-300">
+    <div class="pt-24 pb-10 flex flex-col items-center justify-between h-full w-full">
+        <ul class="flex flex-col items-center gap-16 w-full">
+            <li class="w-full text-center">
+                <a href="#home" class="text-white/80 text-xl font-semibold hover:text-[#99d98c] transition-colors duration-300 block w-full">{t('nav.home')}</a>
+            </li>
+            <li class="w-full text-center">
+                <a href="#experience" class="text-white/80 text-xl font-semibold hover:text-[#99d98c] transition-colors duration-300 block w-full">{t('nav.experience')}</a>
+            </li>
+            <li class="w-full text-center">
+                <a href="#projects" class="text-white/80 text-xl font-semibold hover:text-[#99d98c] transition-colors duration-300 block w-full">{t('nav.projects')}</a>
+            </li>
+            <li class="w-full text-center">
+                <a href="#contact" class="text-white/80 text-xl font-semibold hover:text-[#99d98c] transition-colors duration-300 block w-full">{t('nav.contact')}</a>
+            </li>
+        </ul>
+    
+        <!-- Social icons for mobile menu -->
+        <ul class="flex justify-center gap-8 mt-auto">
+        <li>
+            <a href="https://linkedin.com/in/maximo-ozonas" class="text-white/80 hover:text-[#99d98c] transition-colors duration-300">
+                <Linkedin />
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/maximo-ozonas" class="text-white/80 hover:text-[#99d98c] transition-colors duration-300">
+                <Github />
+            </a>
+        </li>
+        <li>
+            <a href="https://instagram.com/maximo_ozonas" class="text-white/80 hover:text-[#99d98c] transition-colors duration-300">
+                <Instagram />
+            </a>
+        </li>
+        <li>
+            <a href="mailto:maximo_ozonas@outlook.com" class="text-white/80 hover:text-[#99d98c] transition-colors duration-300">
+                <Mail />
+            </a>
+        </li>
+    </ul>
+    </div>
+</div>
+
+<script src="../scripts/header.js"></script>

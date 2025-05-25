@@ -1,0 +1,21 @@
+---
+import { languages } from '../../i18n/ui';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang }, 
+  }));
+}
+
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import HeroSection from '../../components/HeroSection.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="Maximo Ozonas | Portfolio">
+  <HeroSection />
+  <!-- Aquí irán las demás secciones del portfolio -->
+</Layout>
