@@ -15,18 +15,9 @@ async function POST({ request }) {
         { status: 400 }
       );
     }
-    const emailUser = undefined                          ;
-    const emailPass = undefined                                  ;
-    if (!emailUser || !emailPass) {
-      console.error("Email environment variables not set");
-      return new Response(
-        JSON.stringify({
-          success: false,
-          message: "Server configuration error. Please contact the administrator."
-        }),
-        { status: 500 }
-      );
-    }
+    const emailUser = "maxiozonas10@gmail.com";
+    const emailPass = "tviz wisu hhvl jqux";
+    if (!emailUser || !emailPass) ;
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {

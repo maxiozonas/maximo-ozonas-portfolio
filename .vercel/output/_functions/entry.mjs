@@ -1,6 +1,6 @@
 import { renderers } from './renderers.mjs';
 import { c as createExports } from './chunks/entrypoint_DvIFBUar.mjs';
-import { manifest } from './manifest_CjL6eQra.mjs';
+import { manifest } from './manifest_BTiUx9Ko.mjs';
 
 const serverIslandMap = new Map();;
 
@@ -9,7 +9,7 @@ const _page1 = () => import('./pages/api/contact.astro.mjs');
 const _page2 = () => import('./pages/_lang_.astro.mjs');
 const _page3 = () => import('./pages/index.astro.mjs');
 const pageMap = new Map([
-    ["node_modules/.pnpm/astro@5.8.0_@types+node@22._a44a38087602cf3b0b94d2cf3f493bcc/node_modules/astro/dist/assets/endpoint/generic.js", _page0],
+    ["node_modules/.pnpm/astro@5.8.0_@netlify+blobs@_1b896e46cfa550b2853122677dff950f/node_modules/astro/dist/assets/endpoint/generic.js", _page0],
     ["src/pages/api/contact.js", _page1],
     ["src/pages/[lang]/index.astro", _page2],
     ["src/pages/index.astro", _page3]
@@ -23,7 +23,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "middlewareSecret": "d900ee57-0719-46fa-b847-6ecf87d451f3",
+    "middlewareSecret": "f805501e-75f2-499f-a8d6-8797341e7bcc",
     "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);
