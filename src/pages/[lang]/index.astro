@@ -2,6 +2,9 @@
 import { languages } from '../../i18n/ui';
 import Layout from '../../layouts/Layout.astro';
 
+// Indicar que esta página debe prerenderizarse durante la construcción
+export const prerender = true;
+
 export function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({
     params: { lang }, 
