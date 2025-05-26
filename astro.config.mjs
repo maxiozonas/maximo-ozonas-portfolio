@@ -5,8 +5,13 @@ import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    includeFiles: [".env", ".env.production"] 
+  }),
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    define: {
+      'process.env': process.env
+    }
   }
 });
