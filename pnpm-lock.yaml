@@ -23,6 +23,9 @@ importers:
       '@lucide/astro':
         specifier: ^0.511.0
         version: 0.511.0(astro@5.8.0(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.1)(typescript@5.8.3))
+      '@sendgrid/mail':
+        specifier: ^8.1.5
+        version: 8.1.5
       '@tailwindcss/vite':
         specifier: ^4.1.7
         version: 4.1.7(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1))
@@ -660,6 +663,18 @@ packages:
     resolution: {integrity: sha512-Wq2zpapRYLfi4aKxf2Xff0tN+7slj2d4R87WEzqw7ZLsVvO5zwYCIuEGSZYiK41+GlwUo1HiR+GdkLEJnCKTCw==}
     cpu: [x64]
     os: [win32]
+
+  '@sendgrid/client@8.1.5':
+    resolution: {integrity: sha512-Jqt8aAuGIpWGa15ZorTWI46q9gbaIdQFA21HIPQQl60rCjzAko75l3D1z7EyjFrNr4MfQ0StusivWh8Rjh10Cg==}
+    engines: {node: '>=12.*'}
+
+  '@sendgrid/helpers@8.0.0':
+    resolution: {integrity: sha512-Ze7WuW2Xzy5GT5WRx+yEv89fsg/pgy3T1E3FS0QEx0/VvRmigMZ5qyVGhJz4SxomegDkzXv/i0aFPpHKN8qdAA==}
+    engines: {node: '>= 12.0.0'}
+
+  '@sendgrid/mail@8.1.5':
+    resolution: {integrity: sha512-W+YuMnkVs4+HA/bgfto4VHKcPKLc7NiZ50/NH2pzO6UHCCFuq8/GNB98YJlLEr/ESDyzAaDr7lVE7hoBwFTT3Q==}
+    engines: {node: '>=12.*'}
 
   '@shikijs/core@3.4.2':
     resolution: {integrity: sha512-AG8vnSi1W2pbgR2B911EfGqtLE9c4hQBYkv/x7Z+Kt0VxhgQKcW7UNDVYsu9YxwV6u+OJrvdJrMq6DNWoBjihQ==}
@@ -1318,6 +1333,10 @@ packages:
 
   decode-named-character-reference@1.1.0:
     resolution: {integrity: sha512-Wy+JTSbFThEOXQIR2L6mxJvEs+veIzpmqD7ynWxMXGpnk3smkHQOp6forLdHsKpAMW9iJpaBBIxz285t1n1C3w==}
+
+  deepmerge@4.3.1:
+    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
+    engines: {node: '>=0.10.0'}
 
   defu@6.1.4:
     resolution: {integrity: sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==}
@@ -4003,6 +4022,24 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.41.1':
     optional: true
 
+  '@sendgrid/client@8.1.5':
+    dependencies:
+      '@sendgrid/helpers': 8.0.0
+      axios: 1.9.0
+    transitivePeerDependencies:
+      - debug
+
+  '@sendgrid/helpers@8.0.0':
+    dependencies:
+      deepmerge: 4.3.1
+
+  '@sendgrid/mail@8.1.5':
+    dependencies:
+      '@sendgrid/client': 8.1.5
+      '@sendgrid/helpers': 8.0.0
+    transitivePeerDependencies:
+      - debug
+
   '@shikijs/core@3.4.2':
     dependencies:
       '@shikijs/types': 3.4.2
@@ -4891,6 +4928,8 @@ snapshots:
   decode-named-character-reference@1.1.0:
     dependencies:
       character-entities: 2.0.2
+
+  deepmerge@4.3.1: {}
 
   defu@6.1.4: {}
 

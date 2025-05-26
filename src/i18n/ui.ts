@@ -71,7 +71,7 @@ export const ui = {
         
         // Sección de contacto
         'contact.title': 'Contacto',
-        'contact.description': '¿Tienes un proyecto en mente o quieres charlar? No dudes en contactarme a través del formulario o por cualquiera de mis redes sociales.',
+        'contact.description': '¿Tienes un proyecto en mente o quieres charlar? No dudes en contactarme.',
         'contact.info': 'Información de Contacto',
         'contact.openTo': 'Actualmente abierto a:',
         'contact.freelance': 'Oportunidades freelance',
@@ -85,6 +85,8 @@ export const ui = {
         'contact.form.sending': 'Enviando...',
         'contact.form.success.title': '¡Mensaje Enviado!',
         'contact.form.success.message': 'Gracias por contactarme. Te responderé lo antes posible.',
+        'contact.emailMe': 'También puedes enviarme un correo directamente:',
+        'contact.sendEmail': 'Enviar Email',
         
         // Footer
         'footer.description': 'Construyendo experiencias web hermosas, funcionales y accesibles para la web moderna.',
@@ -156,7 +158,7 @@ export const ui = {
         
         // Contact section
         'contact.title': 'Contact',
-        'contact.description': 'Have a project in mind or want to chat? Feel free to reach out using the form below or through any of my social media channels.',
+        'contact.description': 'Have a project in mind or want to chat? Feel free to reach out to me.',
         'contact.info': 'Contact Information',
         'contact.openTo': 'Currently open to:',
         'contact.freelance': 'Freelance opportunities',
@@ -170,6 +172,8 @@ export const ui = {
         'contact.form.sending': 'Sending...',
         'contact.form.success.title': 'Message Sent!',
         'contact.form.success.message': 'Thank you for reaching out. I\'ll get back to you as soon as possible.',
+        'contact.emailMe': 'You can also email me directly:',
+        'contact.sendEmail': 'Send Email',
         
         // Footer
         'footer.description': 'Building beautiful, functional, and accessible web experiences for the modern web.',
