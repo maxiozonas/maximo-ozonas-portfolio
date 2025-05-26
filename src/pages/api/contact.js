@@ -20,8 +20,8 @@ export async function POST({ request }) {
     }
 
     // Obtener variables de entorno
-    const emailUser = import.meta.env.EMAIL_USER;
-    const emailPass = import.meta.env.EMAIL_APP_PASSWORD;
+    const emailUser = process.env.EMAIL_USER;
+    const emailPass = process.env.EMAIL_APP_PASSWORD;
 
     // Verificar variables de entorno
     if (!emailUser || !emailPass) {
