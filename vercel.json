@@ -2,7 +2,6 @@
   "buildCommand": "astro build",
   "devCommand": "astro dev",
   "installCommand": "pnpm install",
-
   "git": {
     "deploymentEnabled": {
       "master": true
