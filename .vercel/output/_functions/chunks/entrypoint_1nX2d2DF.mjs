@@ -1,5 +1,5 @@
-import { z as decryptString, B as createSlotValueFromString, C as isAstroComponentFactory, j as renderComponent, r as renderTemplate, G as ROUTE_TYPE_HEADER, H as REROUTE_DIRECTIVE_HEADER, A as AstroError, J as i18nNoLocaleFoundInPath, K as ResponseSentError, O as bold, P as red, Q as yellow, S as dim, T as blue, V as MiddlewareNoDataOrNextCalled, W as MiddlewareNotAResponse, X as originPathnameSymbol, Y as RewriteWithBodyUsed, Z as GetStaticPathsRequired, _ as InvalidGetStaticPathsReturn, $ as InvalidGetStaticPathsEntry, a0 as GetStaticPathsExpectedParams, a1 as GetStaticPathsInvalidRouteParam, a2 as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, a3 as ActionNotFoundError, a4 as NoMatchingStaticPathFound, a5 as PrerenderDynamicEndpointPathCollide, a6 as ReservedSlotName, a7 as renderSlotToString, a8 as renderJSX, a9 as chunkToString, aa as isRenderInstruction, ab as ForbiddenRewrite, ac as SessionStorageSaveError, ad as SessionStorageInitError, ae as ASTRO_VERSION, af as green, ag as LocalsReassigned, ah as PrerenderClientAddressNotAvailable, ai as clientAddressSymbol, aj as ClientAddressNotAvailable, ak as StaticClientAddressNotAvailable, al as AstroResponseHeadersReassigned, am as responseSentSymbol$1, an as renderPage, ao as REWRITE_DIRECTIVE_HEADER_KEY, ap as REWRITE_DIRECTIVE_HEADER_VALUE, aq as renderEndpoint, ar as LocalsNotAnObject, as as REROUTABLE_STATUS_CODES, at as getAugmentedNamespace } from './astro/server_C9Ip5n67.mjs';
-import { d as distExports, A as ActionError, a as deserializeActionResult, s as serializeActionResult, b as ACTION_RPC_ROUTE_PATTERN, c as ACTION_QUERY_PARAMS, g as getActionQueryString, D as DEFAULT_404_ROUTE, e as default404Instance, N as NOOP_MIDDLEWARE_FN, u as unflatten$1, f as stringify$2, h as ensure404Route } from './astro-designed-error-pages_BQ094GHK.mjs';
+import { z as decryptString, B as createSlotValueFromString, C as isAstroComponentFactory, j as renderComponent, r as renderTemplate, G as ROUTE_TYPE_HEADER, H as REROUTE_DIRECTIVE_HEADER, A as AstroError, J as i18nNoLocaleFoundInPath, K as ResponseSentError, O as bold, P as red, Q as yellow, S as dim, T as blue, V as MiddlewareNoDataOrNextCalled, W as MiddlewareNotAResponse, X as originPathnameSymbol, Y as RewriteWithBodyUsed, Z as GetStaticPathsRequired, _ as InvalidGetStaticPathsReturn, $ as InvalidGetStaticPathsEntry, a0 as GetStaticPathsExpectedParams, a1 as GetStaticPathsInvalidRouteParam, a2 as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, a3 as ActionNotFoundError, a4 as NoMatchingStaticPathFound, a5 as PrerenderDynamicEndpointPathCollide, a6 as ReservedSlotName, a7 as renderSlotToString, a8 as renderJSX, a9 as chunkToString, aa as isRenderInstruction, ab as ForbiddenRewrite, ac as SessionStorageSaveError, ad as SessionStorageInitError, ae as ASTRO_VERSION, af as green, ag as LocalsReassigned, ah as PrerenderClientAddressNotAvailable, ai as clientAddressSymbol, aj as ClientAddressNotAvailable, ak as StaticClientAddressNotAvailable, al as AstroResponseHeadersReassigned, am as responseSentSymbol$1, an as renderPage, ao as REWRITE_DIRECTIVE_HEADER_KEY, ap as REWRITE_DIRECTIVE_HEADER_VALUE, aq as renderEndpoint, ar as LocalsNotAnObject, as as REROUTABLE_STATUS_CODES, at as getAugmentedNamespace } from './astro/server_yUpFc6D3.mjs';
+import { d as distExports, A as ActionError, a as deserializeActionResult, s as serializeActionResult, b as ACTION_RPC_ROUTE_PATTERN, c as ACTION_QUERY_PARAMS, g as getActionQueryString, D as DEFAULT_404_ROUTE, e as default404Instance, N as NOOP_MIDDLEWARE_FN, u as unflatten$1, f as stringify$2, h as ensure404Route } from './astro-designed-error-pages_CNFVOdiw.mjs';
 import buffer from 'node:buffer';
 import crypto$1 from 'node:crypto';
 import { Http2ServerResponse } from 'node:http2';
@@ -5054,6 +5054,7 @@ var hasRequiredSuperstatic;
 function requireSuperstatic () {
 	if (hasRequiredSuperstatic) return superstatic;
 	hasRequiredSuperstatic = 1;
+	var define_process_env_default = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\max\\AppData\\Roaming", ChocolateyInstall: "C:\\ProgramData\\chocolatey", ChocolateyLastPathUpdate: "133861265120348297", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "MAXIMO", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EMAIL_APP_PASSWORD: "tviz wisu hhvl jqux", EMAIL_USER: "maxiozonas10@gmail.com", HOME: "C:\\Users\\max", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\max", INIT_CWD: "C:\\Users\\max\\proyectos\\maximo-ozonas-portfolio", JAVA_HOME: "C:\\Program Files\\Java\\jdk-21", LOCALAPPDATA: "C:\\Users\\max\\AppData\\Local", LOGONSERVER: "\\\\MAXIMO", MAVEN_HOME: "C:\\Users\\max\\apache-maven-3.9.9", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\max\\Proyectos\\maximo-ozonas-portfolio\\node_modules\\.pnpm\\astro@5.8.0_@netlify+blobs@_1b896e46cfa550b2853122677dff950f\\node_modules\\astro\\node_modules;C:\\Users\\max\\Proyectos\\maximo-ozonas-portfolio\\node_modules\\.pnpm\\astro@5.8.0_@netlify+blobs@_1b896e46cfa550b2853122677dff950f\\node_modules;C:\\Users\\max\\Proyectos\\maximo-ozonas-portfolio\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\max\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/10.7.1 npm/? node/v22.14.0 win32 x64", npm_config_verify_deps_before_run: "false", npm_execpath: "C:\\Users\\max\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "astro build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_name: "maximo-ozonas-portfolio", npm_package_version: "0.0.1", NUMBER_OF_PROCESSORS: "8", OneDrive: "C:\\Users\\max\\OneDrive", OS: "Windows_NT", Path: "C:\\Users\\max\\proyectos\\maximo-ozonas-portfolio\\node_modules\\.bin;C:\\Users\\max\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Python313\\Scripts\\;C:\\Python313\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\nodejs\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Program Files\\Java\\jdk-21\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\max\\apache-maven-3.9.9\\bin;C:\\Program Files\\Cloudflare\\Cloudflare WARP\\;C:\\Users\\max\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\max\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\max\\AppData\\Roaming\\npm;C:\\Users\\max\\AppData\\Local\\Programs\\Windsurf\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.PY;.PYW;.CPL", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\max\\proyectos\\maximo-ozonas-portfolio", POWERSHELL_TELEMETRY_OPTOUT: "1", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "AMD64 Family 23 Model 24 Stepping 1, AuthenticAMD", PROCESSOR_LEVEL: "23", PROCESSOR_REVISION: "1801", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\max\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules", PUBLIC: "C:\\Users\\Public", SSH_SOCKET_DIR: "~/.ssh", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\max\\AppData\\Local\\Temp", TERM_PROGRAM: "WarpTerminal", TMP: "C:\\Users\\max\\AppData\\Local\\Temp", USERDOMAIN: "maximo", USERDOMAIN_ROAMINGPROFILE: "maximo", USERNAME: "max", USERPROFILE: "C:\\Users\\max", WARP_HONOR_PS1: "0", WARP_IS_LOCAL_SHELL_SESSION: "1", WARP_SHELL_DEBUG_MODE: "0", WARP_USE_SSH_WRAPPER: "1", windir: "C:\\WINDOWS" };
 	var __defProp = Object.defineProperty;
 	var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 	var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -5105,7 +5106,7 @@ function requireSuperstatic () {
 	    const currentKeys = keys;
 	    const newRegExp = (0, import_path_to_regexp_updated.pathToRegexp)(path, newKeys, options);
 	    const isDiffRegExp = currentRegExp.toString() !== newRegExp.toString();
-	    if (process.env.FORCE_PATH_TO_REGEXP_LOG || isDiffRegExp) {
+	    if (define_process_env_default.FORCE_PATH_TO_REGEXP_LOG || isDiffRegExp) {
 	      const message = JSON.stringify({
 	        path,
 	        currentRegExp: currentRegExp.toString(),
@@ -5114,7 +5115,7 @@ function requireSuperstatic () {
 	      console.error(`[vc] PATH TO REGEXP PATH DIFF @ #${callerId}: ${message}`);
 	    }
 	    const isDiffKeys = !compareKeys(keys, newKeys);
-	    if (process.env.FORCE_PATH_TO_REGEXP_LOG || isDiffKeys) {
+	    if (define_process_env_default.FORCE_PATH_TO_REGEXP_LOG || isDiffKeys) {
 	      const message = JSON.stringify({
 	        isDiffKeys,
 	        currentKeys,
@@ -6368,6 +6369,7 @@ const ASTRO_PATH_PARAM = "x_astro_path";
 const ASTRO_LOCALS_HEADER = "x-astro-locals";
 const ASTRO_MIDDLEWARE_SECRET_HEADER = "x-astro-middleware-secret";
 
+var define_process_env_default = { };
 const createExports = (manifest, { middlewareSecret, skewProtection }) => {
   const app = new NodeApp(manifest);
   const handler = async (req, res) => {
@@ -6389,8 +6391,8 @@ const createExports = (manifest, { middlewareSecret, skewProtection }) => {
       locals = typeof localsHeader === "string" ? JSON.parse(localsHeader) : JSON.parse(localsHeader[0]);
     }
     delete req.headers[ASTRO_MIDDLEWARE_SECRET_HEADER];
-    if (skewProtection && process.env.VERCEL_SKEW_PROTECTION_ENABLED === "1") {
-      req.headers["x-deployment-id"] = process.env.VERCEL_DEPLOYMENT_ID;
+    if (skewProtection && define_process_env_default.VERCEL_SKEW_PROTECTION_ENABLED === "1") {
+      req.headers["x-deployment-id"] = define_process_env_default.VERCEL_DEPLOYMENT_ID;
     }
     const webResponse = await app.render(req, { addCookieHeader: true, clientAddress, locals });
     await NodeApp.writeResponse(webResponse, res);
