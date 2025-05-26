@@ -20,8 +20,8 @@ export async function POST({ request }) {
     }
 
     // Obtener variables de entorno
-    const emailUser = process.env.EMAIL_USER;
-    const emailPass = process.env.EMAIL_APP_PASSWORD;
+    const emailUser = "maxiozonas10@gmail.com";
+    const emailPass = "tviz wisu hhvl jqux";
 
     // Verificar variables de entorno
     if (!emailUser || !emailPass) {
@@ -86,14 +86,26 @@ export async function POST({ request }) {
       { status: 200 }
     );
   } catch (error) {
-    console.error('Error sending email:', error);    
+    console.error('Error sending email:', error);
+    // For debugging, let's always include the stack trace in the response
+    // and provide more details if possible.
+    const errorResponse = {
+      success: false,
+      message: 'Failed to send email. See error details.',
+      errorDetails: {
+        name: error.name,
+        message: error.message,
+        stack: error.stack, // Always include stack for debugging
+        // You can add more properties from the error object if they exist
+      }
+    };
+    if (error.response) { // Nodemailer specific error details
+      errorResponse.errorDetails.nodemailerResponse = error.response;
+      errorResponse.errorDetails.nodemailerResponseCode = error.responseCode;
+    }
+
     return new Response(
-      JSON.stringify({
-        success: false,
-        message: 'Failed to send email',
-        error: error.message,
-        stack: process.env.NODE_ENV !== 'production' ? error.stack : undefined
-      }),
+      JSON.stringify(errorResponse),
       { status: 500 }
     );
   }
