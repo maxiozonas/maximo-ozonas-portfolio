@@ -269,17 +269,33 @@ const getSocialIcon = (iconName: string) => {
           body: JSON.stringify(formData)
         });
         
-        const result = await response.json();
+        // Intentar parsear la respuesta como JSON
+        let result;
+        try {
+          const textResponse = await response.text();
+          
+          // Verificar si parece JSON (comienza con { o [)
+          if (textResponse.trim().startsWith('{') || textResponse.trim().startsWith('[')) {
+            result = JSON.parse(textResponse);
+          } else {
+            throw new Error(`Server returned non-JSON response: ${textResponse.substring(0, 100)}...`);
+          }
+        } catch (parseError) {
+          console.error('Error parsing response:', parseError);
+          throw new Error(`Failed to parse server response: ${parseError instanceof Error ? parseError.message : 'Unknown error'}`);
+        }
         
-        if (response.ok) {
-          // Show success message
+        if (response.ok && result && result.success) {
+          console.log('Email sent successfully:', result.messageId || 'No message ID');
+          
+          // Hide form and show success message
           form.classList.add('hidden');
           successMessage.classList.remove('hidden');
           
           // Reset form
           form.reset();
         } else {
-          throw new Error(result.message || 'Failed to send message');
+          throw new Error(result?.message || 'Failed to send message');
         }
       } catch (error) {
         console.error('Error sending message:', error);
@@ -289,8 +305,9 @@ const getSocialIcon = (iconName: string) => {
         sendingIndicator.classList.add('hidden');
         sendingIndicator.classList.remove('flex');
         
-        // Show error message
-        alert('Failed to send message. Please try again later.');
+        // Show error message with more details
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        alert(`Failed to send message: ${errorMessage}. Please try again later or contact directly via email.`);
       }
     });
   });

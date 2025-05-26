@@ -22,15 +22,6 @@ export async function POST({ request }) {
     // Obtener variables de entorno
     const emailUser = import.meta.env.EMAIL_USER;
     const emailPass = import.meta.env.EMAIL_APP_PASSWORD;
-    
-    // Registrar información sobre las variables de entorno disponibles
-    console.log('Environment variables check:', { 
-      hasEmailUser: !!emailUser, 
-      emailUserLength: emailUser ? emailUser.length : 0,
-      hasEmailPass: !!emailPass, 
-      emailPassLength: emailPass ? emailPass.length : 0,
-      allEnvKeys: Object.keys(import.meta.env).filter(key => !key.includes('VITE_'))
-    });
 
     // Verificar variables de entorno
     if (!emailUser || !emailPass) {
@@ -39,32 +30,23 @@ export async function POST({ request }) {
         JSON.stringify({
           success: false,
           message: 'Server configuration error: Email credentials not found.',
-          debug: { 
-            hasUser: !!emailUser, 
-            hasPass: !!emailPass,
-            availableEnvVars: Object.keys(import.meta.env).filter(key => !key.includes('VITE_'))
-          }
+          debug: { hasUser: !!emailUser, hasPass: !!emailPass }
         }),
         { status: 500 }
       );
     }
 
-    // Configuración más detallada para Gmail
+    // Configuración para Gmail optimizada para entornos serverless
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true, // usar SSL
+      service: 'gmail',
       auth: {
         user: emailUser,
         pass: emailPass,
       },
-      debug: true, // mostrar información de depuración
-    });
-
-    // Verificar la conexión con el servidor SMTP
-    await transporter.verify().catch(error => {
-      console.error('SMTP verification failed:', error);
-      throw new Error(`SMTP verification failed: ${error.message}`);
+      // Deshabilitar verificación TLS en entornos serverless
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
     const mailOptions = {

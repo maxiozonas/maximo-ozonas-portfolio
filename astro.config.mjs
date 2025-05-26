@@ -6,12 +6,10 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   output: 'server',
   adapter: vercel({
-    includeFiles: [".env"] 
+    includeFiles: ['.env'],
+    webAnalytics: { enabled: true }
   }),
   vite: {
-    plugins: [tailwindcss()],
-    define: {
-      'process.env': process.env
-    }
+    plugins: [tailwindcss()]
   }
 });
