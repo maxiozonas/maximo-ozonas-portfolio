@@ -2,8 +2,7 @@
   "buildCommand": "astro build",
   "devCommand": "astro dev",
   "installCommand": "pnpm install",
-  "framework": "astro",
-  "outputDirectory": "dist",
+
   "git": {
     "deploymentEnabled": {
       "master": true
