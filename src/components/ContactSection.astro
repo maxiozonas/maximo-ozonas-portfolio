@@ -216,29 +216,26 @@ const getSocialIcon = (iconName: string) => {
       
       // Validate name
       if (!nameInput.value.trim()) {
-        nameError.textContent = 'Name is required';
+        nameError.textContent = 'Please enter your name';
         nameError.classList.remove('hidden');
         isValid = false;
       }
       
       // Validate email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailInput.value.trim()) {
-        emailError.textContent = 'Email is required';
+        emailError.textContent = 'Please enter your email';
         emailError.classList.remove('hidden');
         isValid = false;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
-        emailError.textContent = 'Please enter a valid email address';
+      } else if (!emailRegex.test(emailInput.value.trim())) {
+        emailError.textContent = 'Please enter a valid email';
         emailError.classList.remove('hidden');
         isValid = false;
       }
       
       // Validate message
-      if (!messageInput || !messageInput.value.trim()) {
-        messageError.textContent = 'Message is required';
-        messageError.classList.remove('hidden');
-        isValid = false;
-      } else if (messageInput.value.length < 10) {
-        messageError.textContent = 'Message must be at least 10 characters';
+      if (!messageInput.value.trim()) {
+        messageError.textContent = 'Please enter your message';
         messageError.classList.remove('hidden');
         isValid = false;
       }
@@ -249,52 +246,51 @@ const getSocialIcon = (iconName: string) => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      if (!validateForm()) {
-        return;
-      }
+      if (!validateForm()) return;
       
-      // Show sending state
+      // Show sending indicator
       submitButton.classList.add('hidden');
       sendingIndicator.classList.remove('hidden');
-      sendingIndicator.style.display = 'flex';
+      sendingIndicator.classList.add('flex');
       
       try {
-        // Get form data
-        const formData = new FormData(form);
+        // Send data to API endpoint
+        const formData = {
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          message: messageInput.value.trim()
+        };
         
-        // Here you would normally send the data to your backend
-        // For example using fetch:
-        // const response = await fetch('/api/contact', {
-        //   method: 'POST',
-        //   body: formData
-        // });
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
         
-        // For now, we'll simulate a successful submission
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const result = await response.json();
         
-        // Show success message
-        form.style.display = 'none';
-        successMessage.classList.remove('hidden');
-        successMessage.style.display = 'block';
-        
-        // Reset form
-        form.reset();
-        
-        // Reset UI after some time (optional)
-        setTimeout(() => {
-          successMessage.style.display = 'none';
-          successMessage.classList.add('hidden');
-          form.style.display = 'block';
-          submitButton.classList.remove('hidden');
-          sendingIndicator.classList.add('hidden');
-          sendingIndicator.style.display = 'none';
-        }, 5000);
+        if (response.ok) {
+          // Show success message
+          form.classList.add('hidden');
+          successMessage.classList.remove('hidden');
+          
+          // Reset form
+          form.reset();
+        } else {
+          throw new Error(result.message || 'Failed to send message');
+        }
       } catch (error) {
         console.error('Error sending message:', error);
-        // Handle error (show error message)
+        
+        // Reset UI
         submitButton.classList.remove('hidden');
         sendingIndicator.classList.add('hidden');
-        sendingIndicator.style.display = 'none';
+        sendingIndicator.classList.remove('flex');
+        
+        // Show error message
+        alert('Failed to send message. Please try again later.');
       }
     });
   });
