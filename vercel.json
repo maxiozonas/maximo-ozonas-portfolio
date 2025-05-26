@@ -3,5 +3,10 @@
   "devCommand": "astro dev",
   "installCommand": "pnpm install",
   "framework": "astro",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "git": {
+    "deploymentEnabled": {
+      "master": true
+    }
+  }
 }
