@@ -7,7 +7,8 @@ export default defineConfig({
   output: 'server',
   adapter: vercel({
     includeFiles: ['.env'],
-    webAnalytics: { enabled: true }
+    webAnalytics: { enabled: true },
+    edgeMiddleware: false // Explicitly disable if not using edge for API routes
   }),
   vite: {
     plugins: [tailwindcss()]
