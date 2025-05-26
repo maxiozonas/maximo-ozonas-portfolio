@@ -1,62 +1,52 @@
 ---
 import { defaultLang } from '../i18n/ui';
+import type { APIContext } from 'astro';
 
-// Asegurarse de que esta página se renderice en el servidor
+// Configurar para prerenderizado
 export const prerender = true;
 
-// Redireccionar al idioma predeterminado
-const redirectUrl = `/${defaultLang}`;
+// Redirección directa al idioma predeterminado
+export function GET({ redirect }: APIContext) {
+  return redirect(`/${defaultLang}`);
+}
 ---
 
-<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
-  <title>Redireccionando...</title>
+  <meta http-equiv="refresh" content={`0;url=/${defaultLang}`} />
+  <title>Redirecting...</title>
   <style>
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
       background-color: #0f172a;
-      color: white;
+      color: #e2e8f0;
     }
     .container {
       text-align: center;
-      padding: 2rem;
     }
-    .redirect-text {
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
+    a {
+      color: #99d98c;
+      text-decoration: none;
     }
-    .spinner {
-      display: inline-block;
-      width: 2rem;
-      height: 2rem;
-      border: 0.25rem solid rgba(255,255,255,0.3);
-      border-radius: 50%;
-      border-top-color: #99d98c;
-      animation: spin 1s ease-in-out infinite;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="redirect-text">Redireccionando al sitio...</div>
-    <div class="spinner"></div>
+    <p>Redirecting to <a href={`/${defaultLang}`}>Maximo Ozonas Portfolio</a>...</p>
   </div>
-
-  <script define:vars={{ redirectUrl }}>
-    // Redireccionar usando JavaScript como respaldo
-    window.location.href = redirectUrl;
+  
+  <script define:vars={{ defaultLang }}>
+    window.location.href = `/${defaultLang}`;
   </script>
 </body>
 </html>
