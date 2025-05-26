@@ -1,0 +1,71 @@
+---
+import ExperienceCard from "./ExperienceCard.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Datos de experiencias
+const experiences = [
+  {
+    id: "madryn-empleos",
+    title: t('experience.madrynEmpleos.title'),
+    company: t('experience.madrynEmpleos.company'),
+    startDate: "Dec 2024",
+    endDate: "Present",
+    location: "Puerto Madryn, Argentina",
+    description: [
+      t('experience.madrynEmpleos.responsibilities.1'),
+      t('experience.madrynEmpleos.responsibilities.2'),
+      t('experience.madrynEmpleos.responsibilities.3'),
+      t('experience.madrynEmpleos.responsibilities.4')
+    ],
+    technologies: ["NextJS", "React", "TailwindCSS", "Spring Boot", "PostgreSQL", "Python"]
+  },
+  {
+    id: "madryn-buceo",
+    title: t('experience.madrynBuceo.title'),
+    company: t('experience.madrynBuceo.company'),
+    startDate: "Feb 2025",
+    endDate: "June 2025",
+    location: "Puerto Madryn, Argentina",
+    description: [
+      t('experience.madrynBuceo.responsibilities.1'),
+      t('experience.madrynBuceo.responsibilities.2'),
+      t('experience.madrynBuceo.responsibilities.3'),
+      t('experience.madrynBuceo.responsibilities.4')
+    ],
+    technologies: ["NextJS", "React", "TailwindCSS", "Spring Boot", "MySQL"]
+  }
+];
+---
+
+<section id="experience" class="py-20 relative">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col items-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">
+        {t('experience.title')}
+      </h2>
+      <div class="bg-[#99d98c] w-[50%] h-[4px] mx-auto mt-4 mb-8"></div>
+      <p class="text-gray-300 text-center max-w-2xl text-lg">
+        {t('experience.description')}
+      </p>
+    </div>
+
+    <div class="relative">
+      {/* Timeline line */}
+      <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-[#99d98c] to-[#76c893] hidden md:block"></div>
+
+      {/* Experience items */}
+      <div class="space-y-12">
+        {experiences.map((experience, index) => (
+          <ExperienceCard 
+            experience={experience} 
+            isEven={index % 2 === 0} 
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+

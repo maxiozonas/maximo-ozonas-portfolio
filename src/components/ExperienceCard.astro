@@ -1,0 +1,151 @@
+---
+import { Calendar, MapPin } from "@lucide/astro";
+
+interface Props {
+  experience: {
+    id: string;
+    title: string;
+    company: string;
+    startDate: string;
+    endDate?: string;
+    location: string;
+    description: string[];
+    technologies: string[];
+  };
+  isEven: boolean;
+}
+
+const { experience, isEven } = Astro.props;
+const animationDirection = isEven ? "fade-right" : "fade-left";
+---
+
+<div class="relative md:flex items-center" data-aos={animationDirection}>
+  {/* Timeline dot for medium and larger screens */}
+  <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full bg-[#000814] border-4 border-[#99d98c] z-10"></div>
+  
+  {/* Card container with responsive alignment */}
+  <div class={`w-full md:w-5/12 ${isEven ? 'md:mr-auto' : 'md:ml-auto'}`}>
+    <div class="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl relative border border-gray-800">
+      {/* Top section with title and dates */}
+      <div class="mb-4">
+        <h3 class="text-xl font-bold text-white">
+          {experience.title}
+        </h3>
+        <h4 class="text-lg font-semibold text-[#99d98c]">
+          {experience.company}
+        </h4>
+        
+        <div class="flex flex-wrap items-center gap-3 mt-2 text-sm text-gray-400">
+          <div class="flex items-center">
+            <Calendar size={16} class="mr-1" />
+            <span>
+              {experience.startDate} - {experience.endDate || 'Present'}
+            </span>
+          </div>
+          <div class="flex items-center">
+            <MapPin size={16} class="mr-1" />
+            <span>{experience.location}</span>
+          </div>
+        </div>
+      </div>
+      
+      {/* Description */}
+      <ul class="space-y-2 mb-4">
+        {experience.description.map((item) => (
+          <li class="text-gray-300 flex items-start">
+            <span class="inline-block w-1.5 h-1.5 bg-[#99d98c] rounded-full mt-2 mr-2 flex-shrink-0"></span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      
+      {/* Technologies */}
+      <div class="flex flex-wrap gap-2 mt-4">
+        {experience.technologies.map((tech) => (
+          <span class="px-3 py-1 bg-[#99d98c]/20 text-[#e2e8f0] text-xs font-medium rounded-full">
+            {tech}
+          </span>
+        ))}
+      </div>
+      
+      {/* Decorative element */}
+      <div class="absolute top-0 right-0 -mt-2 -mr-2 w-8 h-8 bg-[#99d98c] rounded opacity-80"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  .experience-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(153, 217, 140, 0.2);
+    color: #99d98c;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .job-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .company-name {
+    color: #99d98c;
+    margin-left: 0.5rem;
+  }
+
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #94a3b8;
+    font-size: 0.875rem;
+  }
+
+  .responsibility-list {
+    margin-bottom: 1.5rem;
+  }
+
+  .responsibility-list li {
+    display: flex;
+    margin-bottom: 0.75rem;
+    color: #e2e8f0;
+  }
+
+  .list-icon {
+    color: #99d98c;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    background-color: #001d3d;
+    color: #cbd5e1;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .tech-tag:hover {
+    background-color: #99d98c;
+    color: #000814;
+  }
+</style>

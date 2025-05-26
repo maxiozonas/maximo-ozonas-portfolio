@@ -1,0 +1,135 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { Github } from "@lucide/astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Datos de proyectos académicos
+const backendProjects = [
+  {
+    id: "university-management",
+    title: t('academic.backend.project1.title'),
+    description: t('academic.backend.project1.description'),
+    technologies: ["Java", "POO", "REST API"],
+    githubUrl: "https://github.com/maxiozonas/universityProject"
+  },
+  {
+    id: "rpg-game",
+    title: t('academic.backend.project2.title'),
+    description: t('academic.backend.project2.description'),
+    technologies: ["Java", "Design Patterns", "Event-driven"],
+    githubUrl: "https://github.com/maxiozonas/RolGameCards"
+  },
+  {
+    id: "consumify-api",
+    title: t('academic.backend.project3.title'),
+    description: t('academic.backend.project3.description'),
+    technologies: ["ExpressJS", "REST API", "Spotify API"],
+    githubUrl: "https://github.com/stefano-dannunzio/ConsumifyAPI"
+  }
+];
+
+const frontendProjects = [
+  {
+    id: "consumify-mobile",
+    title: t('academic.frontend.project1.title'),
+    description: t('academic.frontend.project1.description'),
+    technologies: ["Flutter", "REST API", "Mobile"],
+    githubUrl: "https://github.com/stefano-dannunzio/ConsumifyApp"
+  },
+  {
+    id: "movies-site",
+    title: t('academic.frontend.project2.title'),
+    description: t('academic.frontend.project2.description'),
+    technologies: ["Flask", "IMDB API", "Web"],
+    githubUrl: ""
+  }
+];
+---
+
+<div class="mt-20">
+  <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-8">
+    {t('academic.title')}
+  </h3>
+  
+  <!-- Backend Projects -->
+  <div class="mb-12">
+    <h4 class="text-xl font-semibold text-[#99d98c] mb-6 border-b border-gray-700 pb-2">
+      {t('academic.backend.title')}
+    </h4>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {backendProjects.map((project) => (
+        <div class="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl relative border border-gray-800">
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <h5 class="text-lg font-semibold text-white">{project.title}</h5>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">{project.description}</p>
+          </div>
+          <div class="mt-auto flex justify-between items-center">
+            <div class="flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <span class="px-2 py-1 bg-[#99d98c]/20 text-[#e2e8f0] text-xs font-medium rounded">
+                  {tech}
+                </span>
+              ))}
+            </div>
+            {project.githubUrl && (
+                <a 
+                  href={project.githubUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="p-1.5 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
+                  aria-label="View code on GitHub"
+                >
+                  <Github size={16} />
+                </a>
+              )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- Frontend Projects -->
+  <div>
+    <h4 class="text-xl font-semibold text-[#99d98c] mb-6 border-b border-gray-700 pb-2">
+      {t('academic.frontend.title')}
+    </h4>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {frontendProjects.map((project) => (
+        <div class="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl relative border border-gray-800">
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <h5 class="text-lg font-semibold text-white">{project.title}</h5>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">{project.description}</p>
+          </div>
+          <div class="mt-auto flex justify-between items-center">
+            <div class="flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <span class="px-2 py-1 bg-[#99d98c]/20 text-[#e2e8f0] text-xs font-medium rounded">
+                  {tech}
+                </span>
+              ))}
+            </div>
+            {project.githubUrl && (
+                <a 
+                  href={project.githubUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="p-1.5 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
+                  aria-label="View code on GitHub"
+                >
+                  <Github size={16} />
+                </a>
+              )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

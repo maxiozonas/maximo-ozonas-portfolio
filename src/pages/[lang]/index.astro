@@ -10,6 +10,9 @@ export function getStaticPaths() {
 
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import HeroSection from '../../components/HeroSection.astro';
+import ExperienceSection from '../../components/ExperienceSection.astro';
+import ProjectsSection from '../../components/ProjectsSection.astro';
+import ContactSection from '../../components/ContactSection.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -17,5 +20,7 @@ const t = useTranslations(lang);
 
 <Layout title="Maximo Ozonas | Portfolio">
   <HeroSection />
-  <!-- Aquí irán las demás secciones del portfolio -->
+  <ExperienceSection />
+  <ProjectsSection />
+  <ContactSection />
 </Layout>
