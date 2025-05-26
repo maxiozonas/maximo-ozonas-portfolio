@@ -5,11 +5,7 @@ import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   output: 'server',
-  adapter: vercel({
-    includeFiles: ['.env'],
-    webAnalytics: { enabled: true },
-    edgeMiddleware: false // Explicitly disable if not using edge for API routes
-  }),
+  adapter: vercel(),
   vite: {
     plugins: [tailwindcss()]
   }

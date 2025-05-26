@@ -106,7 +106,7 @@ const getSocialIcon = (iconName: string) => {
           <div class="absolute top-0 right-0 w-24 h-24 bg-[#99d98c]/10 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
           <div class="absolute bottom-0 left-0 w-32 h-32 bg-[#76c893]/10 rounded-full transform -translate-x-1/3 translate-y-1/3"></div>
           
-          <form id="contact-form" class="space-y-6 relative z-10">
+          <form action="https://formspree.io/f/xkgrlaor" method="POST" class="space-y-6 relative z-10">
             <div>
               <label for="name" class="block text-sm font-medium text-gray-300 mb-1">
                 {t('contact.form.name')}
@@ -114,12 +114,11 @@ const getSocialIcon = (iconName: string) => {
               <input
                 type="text"
                 id="name"
-                name="name"
-                class="w-full px-4 py-3 rounded-lg border border-[#0a0908]/80 bg-[#0a0908] text-white focus:outline-none focus:ring-2 focus:ring-[#99d98c] focus:border-transparent"
-                placeholder="John Doe"
+                name="name" 
+                class="w-full px-4 py-3 bg-[#0a0908] border border-gray-700 rounded-lg text-gray-300 focus:ring-2 focus:ring-[#99d98c] focus:border-[#99d98c] outline-none transition-colors duration-300 placeholder-gray-500"
+                placeholder="Your Name"
                 required
               />
-              <p class="mt-1 text-sm text-red-400 hidden" id="name-error"></p>
             </div>
             
             <div>
@@ -129,12 +128,11 @@ const getSocialIcon = (iconName: string) => {
               <input
                 type="email"
                 id="email"
-                name="email"
-                class="w-full px-4 py-3 rounded-lg border border-[#0a0908]/80 bg-[#0a0908] text-white focus:outline-none focus:ring-2 focus:ring-[#99d98c] focus:border-transparent"
+                name="_replyto" 
+                class="w-full px-4 py-3 bg-[#0a0908] border border-gray-700 rounded-lg text-gray-300 focus:ring-2 focus:ring-[#99d98c] focus:border-[#99d98c] outline-none transition-colors duration-300 placeholder-gray-500"
                 placeholder="your.email@example.com"
                 required
               />
-              <p class="mt-1 text-sm text-red-400 hidden" id="email-error"></p>
             </div>
             
             <div>
@@ -143,155 +141,24 @@ const getSocialIcon = (iconName: string) => {
               </label>
               <textarea
                 id="message"
-                name="message"
-                rows={5}
-                class="w-full px-4 py-3 rounded-lg border border-[#0a0908]/80 bg-[#0a0908] text-white focus:outline-none focus:ring-2 focus:ring-[#99d98c] focus:border-transparent resize-none"
-                placeholder={t('contact.form.placeholder')}
+                name="message" 
+                rows={4}
+                class="w-full px-4 py-3 bg-[#0a0908] border border-gray-700 rounded-lg text-gray-300 focus:ring-2 focus:ring-[#99d98c] focus:border-[#99d98c] outline-none transition-colors duration-300 placeholder-gray-500 resize-none"
+                placeholder="Your message..."
                 required
               ></textarea>
-              <p class="mt-1 text-sm text-red-400 hidden" id="message-error"></p>
             </div>
             
             <button
               type="submit"
-              id="submit-button"
-              class="w-full py-3 px-6 flex items-center justify-center rounded-lg bg-[#99d98c] hover:bg-[#76c893] text-gray-900 font-medium transition-colors shadow-lg"
+              class="w-full py-3 px-6 flex items-center justify-center rounded-lg bg-[#99d98c] text-black font-medium hover:bg-[#88c77c] transition-colors shadow-lg focus:outline-none focus:ring-2 focus:ring-[#99d98c] focus:ring-offset-2 focus:ring-offset-[#202020]"
             >
               {t('contact.form.send')}
               <Send size={18} class="ml-2" />
             </button>
-
-            <div id="sending-indicator" class="hidden w-full py-3 px-6 items-center justify-center rounded-lg bg-gray-600 text-white font-medium transition-colors shadow-lg">
-              <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              {t('contact.form.sending')}
-            </div>
           </form>
-
-          <div id="success-message" class="hidden py-12 text-center">
-            <div class="w-16 h-16 bg-green-900/30 rounded-full flex items-center justify-center mb-6 mx-auto">
-              <CheckCircle size={32} class="text-[#99d98c]" />
-            </div>
-            <h3 class="text-xl font-bold text-white mb-2">{t('contact.form.success.title')}</h3>
-            <p class="text-gray-300">
-              {t('contact.form.success.message')}
-            </p>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-  // Form validation and submission logic
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contact-form') as HTMLFormElement;
-    const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
-    const sendingIndicator = document.getElementById('sending-indicator') as HTMLDivElement;
-    const successMessage = document.getElementById('success-message') as HTMLDivElement;
-    
-    if (!form) return;
-    
-    const nameInput = document.getElementById('name') as HTMLInputElement;
-    const emailInput = document.getElementById('email') as HTMLInputElement;
-    const messageInput = document.getElementById('message') as HTMLTextAreaElement;
-    
-    const nameError = document.getElementById('name-error') as HTMLParagraphElement;
-    const emailError = document.getElementById('email-error') as HTMLParagraphElement;
-    const messageError = document.getElementById('message-error') as HTMLParagraphElement;
-    
-    const validateForm = (): boolean => {
-      let isValid = true;
-      
-      // Reset errors
-      nameError.textContent = '';
-      nameError.classList.add('hidden');
-      emailError.textContent = '';
-      emailError.classList.add('hidden');
-      messageError.textContent = '';
-      messageError.classList.add('hidden');
-      
-      // Validate name
-      if (!nameInput.value.trim()) {
-        nameError.textContent = 'Please enter your name';
-        nameError.classList.remove('hidden');
-        isValid = false;
-      }
-      
-      // Validate email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailInput.value.trim()) {
-        emailError.textContent = 'Please enter your email';
-        emailError.classList.remove('hidden');
-        isValid = false;
-      } else if (!emailRegex.test(emailInput.value.trim())) {
-        emailError.textContent = 'Please enter a valid email';
-        emailError.classList.remove('hidden');
-        isValid = false;
-      }
-      
-      // Validate message
-      if (!messageInput.value.trim()) {
-        messageError.textContent = 'Please enter your message';
-        messageError.classList.remove('hidden');
-        isValid = false;
-      }
-      
-      return isValid;
-    };
-    
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      if (!validateForm()) return;
-      
-      // Show sending indicator
-      submitButton.classList.add('hidden');
-      sendingIndicator.classList.remove('hidden');
-      sendingIndicator.classList.add('flex');
-      
-      try {
-        // Send data to API endpoint
-        const formData = {
-          name: nameInput.value.trim(),
-          email: emailInput.value.trim(),
-          message: messageInput.value.trim()
-        };
-        
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        });
-        
-        const result = await response.json();
-        
-        if (response.ok) {
-          // Show success message
-          form.classList.add('hidden');
-          successMessage.classList.remove('hidden');
-          
-          // Reset form
-          form.reset();
-        } else {
-          throw new Error(result.message || 'Failed to send message');
-        }
-      } catch (error) {
-        console.error('Error sending message:', error);
-        
-        // Reset UI
-        submitButton.classList.remove('hidden');
-        sendingIndicator.classList.add('hidden');
-        sendingIndicator.classList.remove('flex');
-        
-        // Show error message
-        alert('Failed to send message. Please try again later.');
-      }
-    });
-  });
-</script>

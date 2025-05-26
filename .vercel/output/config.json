@@ -18,10 +18,6 @@
 		{
 			"src": "^/_image/?$",
 			"dest": "_render"
-		},
-		{
-			"src": "^/api/contact/?$",
-			"dest": "_render"
 		}
 	]
 }
